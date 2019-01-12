@@ -36,18 +36,12 @@ func (h Human) Talk() string {
 
 }
 
-type Man struct {
-	Human
-}
-
-func (g Man) setHumanInfo(name string, age int32, city string, address string) Man {
-	return Man{
-		Human{
-			name,
-			age,
-			city,
-			address,
-		},
+func setHumanInfo(name string, age int32, city string, address string) *Human {
+	return &Human{
+		name,
+		age,
+		city,
+		address,
 	}
 }
 
@@ -61,13 +55,10 @@ type crowd []People
 
 func main() {
 
-	sergey := new(Man).setHumanInfo("Sergey", 26, "Kyiv", "Ahmatova")
-	tema := new(Man).setHumanInfo("Tema", 29, "Kyiv", "test")
+	Sergey := setHumanInfo("Sergey", 26, "Kyiv", "Ahmatova")
+	Artem := setHumanInfo("Tema", 29, "Kyiv", "test")
 
-	cr := make(crowd, 0)
-
-	cr = append(cr, sergey, tema)
+	cr := append(make(crowd, 0), Sergey, Artem)
 
 	PeopleTalk(cr)
-
 }
