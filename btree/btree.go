@@ -1,8 +1,7 @@
-package main
+package btree
 
 import (
 	"fmt"
-	"math/rand"
 	"sync"
 )
 
@@ -123,23 +122,4 @@ func (btree *Btree) Display() {
 	fmt.Println("---------------------------")
 	stringify(btree.root, 0)
 	fmt.Println("---------------------------")
-}
-
-func main() {
-	var tree = NewTree(&Node{Data: 5})
-
-	for i := 0; i < 10; i++ {
-		tree.Insert(Int(rand.Intn(10 + 1)))
-	}
-
-	findMe := Int(8)
-
-	if tree.Find(findMe) {
-		fmt.Printf("%d - is in the tree\n", findMe)
-	} else {
-		fmt.Println("there is no such value in the tree")
-	}
-
-	tree.Display()
-
 }

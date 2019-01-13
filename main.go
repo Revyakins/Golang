@@ -1,17 +1,25 @@
 package main
 
-import "fmt"
-
+import (
+	"fmt"
+	"learning/btree"
+	"math/rand"
+)
 
 func main() {
+	var tree = btree.NewTree(&btree.Node{Data: 5})
 
-var wait = make(chan struct{} )
+	for i := 0; i < 10; i++ {
+		tree.Insert(btree.Int(rand.Intn(10 + 1)))
+	}
 
- go func() {
- 
- fmt.Println("Hello world")
- wait <- struct {}{} 
- }()
+	findMe := btree.Int(8)
 
- <- wait
+	if tree.Find(findMe) {
+		fmt.Printf("%d - is in the tree\n", findMe)
+	} else {
+		fmt.Println("there is no such value in the tree")
+	}
+
+	tree.Display()
 }
