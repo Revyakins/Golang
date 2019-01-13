@@ -3,10 +3,24 @@ package main
 import (
 	"fmt"
 	"learning/btree"
+	list "learning/linked_list"
 	"math/rand"
 )
 
-func main() {
+func printList() {
+	fmt.Println("---- Linked list ----")
+
+	list := new(list.List)
+	list.Insert(5)
+	list.Insert(4)
+
+	fmt.Println(list.Display())
+	fmt.Println(list.Reverse())
+}
+
+func printBtree() {
+	fmt.Println("---- Btree ----")
+
 	var tree = btree.NewTree(&btree.Node{Data: 5})
 
 	for i := 0; i < 10; i++ {
@@ -22,4 +36,12 @@ func main() {
 	}
 
 	tree.Display()
+
+}
+
+func main() {
+
+	printList()
+	printBtree()
+
 }

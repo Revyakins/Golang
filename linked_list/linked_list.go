@@ -1,4 +1,4 @@
-package main
+package linked_list
 
 import "fmt"
 
@@ -32,17 +32,17 @@ func (L *List) Insert(val interface{}) {
 	L.tail = l
 }
 
-func (L *List) Display() {
+func (L *List) Display() string {
 	node := L.head
 
 	for node != nil {
 		fmt.Printf("%+v ->", node.value)
 		node = node.next
 	}
-	fmt.Println()
+	return ""
 }
 
-func (L *List) Reverse() {
+func (L *List) Reverse() string {
 	curr := L.head
 	var prev *Node
 
@@ -58,14 +58,6 @@ func (L *List) Reverse() {
 	}
 
 	L.head = prev
-	L.Display()
-}
 
-func main() {
-	var list = new(List)
-	list.Insert(5)
-	list.Insert(4)
-
-	list.Display()
-	list.Reverse()
+	return ""
 }

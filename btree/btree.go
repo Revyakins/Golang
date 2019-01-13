@@ -8,8 +8,8 @@ import (
 type Int int32
 
 type Btree struct {
-	root *Node
 	sync.Mutex
+	root *Node
 }
 
 type Node struct {
@@ -29,6 +29,7 @@ func NewTree(node *Node) *Btree {
 func (tree *Btree) Insert(data Int) {
 
 	tree.Lock()
+	defer tree.Unlock()
 
 	if data <= 0 {
 		panic("value cannot be null")
@@ -43,7 +44,6 @@ func (tree *Btree) Insert(data Int) {
 		insertNode(tree.root, node)
 	}
 
-	defer tree.Unlock()
 }
 
 func insertNode(node, newNode *Node) {

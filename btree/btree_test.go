@@ -15,10 +15,9 @@ func TestBtree_Find(t *testing.T) {
 	tree.Insert(Int(3))
 	tree.Insert(Int(8))
 
-	findMe := Int(8)
-	result := tree.Find(findMe)
+	findMe := Int(3)
 
-	if !result {
+	if result := tree.Find(findMe); !result {
 		t.Error(
 			"For", findMe,
 			"expected", true,
